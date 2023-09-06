@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Code2.Models.GenreRequest>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Genre Requests List</h2>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-controller="Genre" asp-action="Create">Create New</a>
+    </p>
+}
+else
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GenreName)
+            </th>
+            <th>
+                Store Owner Email
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsApproved)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GenreName)
+            </td>
+            <td>
+                @{
+                    var user = await ViewBag.UserManager.FindByIdAsync(item.RequestedByUserId);
+                 }
+                @if (user != null)
+                {
+                    @user.Email
+                }
+            </td>
+                <td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <form method="post" asp-action="Approve" asp-route-id="@item.Id">
+                            @Html.AntiForgeryToken()
+                            <button type="submit">Approve</button> |
+                        </form>
+                        <form method="post" asp-action="Reject" asp-route-id="@item.Id">
+                            @Html.AntiForgeryToken()
+                            <button type="submit">Reject</button> |
+                        </form>
+                    }
+                    else if (User.IsInRole("StoreOwner"))
+                    {
+                        @if (item.IsApproved)
+                        {
+                            <span>Approved</span>
+                        }
+                        else
+                        {
+                            <span>Pending</span>
+                        }
+                    }
+                </td>
+
+        </tr>
+}
+    </tbody>
+</table>

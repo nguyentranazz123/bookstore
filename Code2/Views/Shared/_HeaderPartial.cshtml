@@ -1,0 +1,31 @@
+﻿@if (@User.IsInRole("Customer"))
+{
+	<div class="row">
+		<div class="col-md-9">
+			<div class="header-search">
+				<form asp-controller="Home" asp-action="Search" method="get">
+					<input class="Search" name="query" placeholder="Search here">
+					<button class="search-btn" type="submit">Search</button>
+				</form>
+			</div>
+			
+		</div>
+		<!-- Cart -->
+		<div class="col-md-3 clearfix">
+			<div class="header-ctn">
+				<div>
+					<a asp-controller="Cart" asp-action="ViewCart">
+						<i class="fa fa-shopping-cart"></i>
+						<span>Your Cart</span>
+					</a>
+				</div>
+				
+			</div>
+
+		</div>
+		<!-- /Cart -->
+		
+
+		
+	</div>
+}

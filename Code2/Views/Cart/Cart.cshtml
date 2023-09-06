@@ -1,0 +1,55 @@
+﻿@model Code2.Models.Cart
+
+@{
+    ViewData["Title"] = "Cart";
+}
+
+
+<h2>Cart</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Book</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>SubTotal</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model?.Lines)
+            {
+                <tr>
+                    <td>@item.Book.Name</td>
+                    <td>$@item.Book.Price</td>
+                    <td>
+                        <div class="input-group quantity mx-auto" style="width: 100px">
+                            <div class="input-group-btn">
+                            <a asp-controller="Cart" asp-action="UpdateCart" asp-route-id="@item.Book.Id" class="btn btn-sm btn-primary btn-minus"><i class="fa fa-minus"></i></a>
+                            </div>
+                            <input type="text" class="form-control form-control-sm bg-secondary text-center" value="@item.Quantity">
+                            <div class="input-group-btn">
+                            <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.Book.Id" class="btn btn-sm btn-primary btn-plus"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                        
+                    </td>
+                    <td>$@(item.Quantity * item.Book.Price)</td>
+                <td class="align-middle"><a asp-controller="Cart" asp-action="RemoveCart" asp-route-id="@item.Book.Id" class="btn btn-sm btn-primary"><i class="fa fa-times"></i></a></td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3"></td>
+                <td><strong>Total: </strong></td>
+                <td>$@Model.ComputeTotalValue()</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="text-center">
+        <a asp-controller="Cart" asp-action="Checkout" class="btn btn-primary">Checkout</a>
+    </div>
+

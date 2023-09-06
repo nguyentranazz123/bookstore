@@ -1,0 +1,27 @@
+﻿@model List<Code2.Models.OrderDetail>
+
+<h2>Order Details</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Book Name</th>
+            <th>Quantity</th>
+            <th>Book Price</th>
+            <th>Sub Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var detail in Model)
+        {
+            <tr>
+                <td>@detail.Id</td>
+                <td>@detail.Book.Name</td>
+                <td>@detail.Quantity</td>
+                <td>$@detail.Book.Price</td>
+                <td>$@(detail.Book.Price * detail.Quantity)</td>
+            </tr>
+        }
+    </tbody>
+</table>

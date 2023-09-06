@@ -1,0 +1,57 @@
+﻿@using Code2.Models
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model IEnumerable<Code2.Models.Book>
+@if (@User.IsInRole("Customer"))
+{
+	<div class="row">
+		<form asp-controller="Home" asp-action="Filter" method="get">
+			<select class="Filter" name="genre">
+				<option value="">All Categories</option>
+				@foreach (var genre in ViewBag.Genres)
+				{
+					<option value="@genre.Id">@genre.Name</option>
+				}
+			</select>
+			<button class="search-btn" type="submit">Search</button>
+		</form>
+	</div>
+}
+
+
+<div class="products-tabs">
+	<!-- tab -->
+	<div id="tab1" class="tab-pane active">
+		<div class="products-slick" data-nav="#slick-nav-1">
+			<!-- product -->
+			@foreach (var item in Model) {
+			<div class="product">
+				<div class="product-img">
+						<a asp-controller="Books" asp-action="Details" asp-route-id="@item.Id"><img src="~/images/@item.Image" alt="" height="400"></a>
+				</div>
+				<div class="product-body">
+						@Html.DisplayFor(modelItem => @item.Genre.Name)
+					<h3 class="product-name"><a href="#">@item.Name</a></h3>
+					<h4 class="product-price">$@item.Price </h4>
+				</div>
+					@if (@User.IsInRole("Customer"))
+					{
+						<div class="add-to-cart">
+							<a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.Id" class="add-to-cart-btn">
+								<i class="fa fa-shopping-cart"></i> add to cart
+							</a>
+						</div>
+					}
+					
+			</div>
+			}
+			<!-- /product -->
+			
+			
+		</div>
+		<div id="slick-nav-1" class="products-slick-nav"></div>
+	</div>
+	<!-- /tab -->
+</div>
+

@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Code2",
+    "\\Code2\\Controllers",
+    "\\Code2\\Data",
+    "\\Code2\\Data\\Migrations",
+    "\\Code2\\Models",
+    "\\Code2\\ViewModel",
+    "\\Code2\\Views",
+    "\\Code2\\Views\\Admin",
+    "\\Code2\\Views\\Shared"
+  ],
+  "SelectedNode": "\\Code2\\ViewModel\\ResetPasswordViewModel.cs",
+  "PreviewInSolutionExplorer": false
+}

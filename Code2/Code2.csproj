@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-Code2-60cc23c1-282d-445e-8e55-55eeac618527</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Views\Authors\Create.cshtml" />
+    <None Include="Views\Authors\Delete.cshtml" />
+    <None Include="Views\Authors\Details.cshtml" />
+    <None Include="Views\Authors\Edit.cshtml" />
+    <None Include="Views\Authors\Index.cshtml" />
+    <None Include="Views\Books\Create.cshtml" />
+    <None Include="Views\Books\Delete.cshtml" />
+    <None Include="Views\Books\Details.cshtml" />
+    <None Include="Views\Books\Edit.cshtml" />
+    <None Include="Views\Books\Index.cshtml" />
+    <None Include="Views\Cart\Cart.cshtml" />
+    <None Include="Views\Genres\Create.cshtml" />
+    <None Include="Views\Genres\Delete.cshtml" />
+    <None Include="Views\Genres\Details.cshtml" />
+    <None Include="Views\Genres\Edit.cshtml" />
+    <None Include="Views\Genres\Index.cshtml" />
+    <None Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.20" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.20" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.20" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.21">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+  </ItemGroup>
+
+</Project>
